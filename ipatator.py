@@ -35,7 +35,7 @@
 ## IPatator is a small library to
 ##  perform some computation on IP.
 ##
-## IPatator can be useful to generate
+## IPatator can be usefull to generate
 ##  IP list for scanning network tools
 ##  and it can obfuscate IPv4 for your
 ##  hacking tools/attempts.
