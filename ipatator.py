@@ -11,7 +11,7 @@
 ## Twitter  : 'QE1sbGVQYXJrM3JfZGV2'.decode('base64')
 ## Github   : 'aHR0cHM6Ly9naXRodWIuY29tL21sbGVwYXJrZXI='.decode('base64')
 ##
-## Version : 0.0.0.3 Alpha
+## Version : 0.0.0.4 Alpha
 ## Code name : Blue ﻿Aluminium Ladybug
 ##
 ## Semantic:
@@ -67,6 +67,11 @@
 ## Changelog                          ##
 ########################################
 ##
+## 04/10/2016 0.0.0.4 Alpha
+##
+##   - Fix a little bug in MagicIP()
+##
+##
 ## 28/09/2016 0.0.0.3 Alpha
 ##
 ##   - Add class MagikIP() for IPv4 obfuscation.
@@ -91,7 +96,7 @@
 ## TODO                               ##
 ########################################
 ##
-## For version 0.0.0.4 Alpha :
+## For version 0.0.0.5 Alpha :
 ##
 ##  - Add de-obfuscating features to MagicIP().
 ##  - Add new obfuscation methods.
@@ -145,7 +150,7 @@ import re
  ########################################
 
 __author__ = "Mademoiselle Parker"
-__version__ = "0.0.0.3 Alpha"
+__version__ = "0.0.0.4 Alpha"
 __codename__= "Blue ﻿Aluminium Ladybug"
 __authormail__= 'Z3dlbm5hZWxsZS5nbG9pcmVAZ21haWwuY29t'.decode('base64')
 __twitter__ = 'QE1sbGVQYXJrM3I='.decode('base64')
@@ -257,7 +262,7 @@ class MagicIP:
 
     def __init__(self, ip = None, prefix = None):
 
-        self.ip = ip.replace('http://', '').replace('https://', '').split('/')[0] if self.isip(ip.replace('http://', '').replace('https://', '').split('/')[0]) else None
+        self.ip = ip.replace('http://', '').replace('https://', '').split('/')[0] if self.isip(ip) else None
         self.prefix = prefix if prefix else ''
 
 
@@ -272,7 +277,7 @@ class MagicIP:
     #
     def isip(self, ip = None):
 
-        ip_tmp = ip if ip else None if not self.ip else self.ip
+        ip_tmp = ip.replace('http://', '').replace('https://', '').split('/')[0] if ip else None #if not self.ip else self.ip
 
 
         if ip_tmp and len(ip_tmp.split('.')) == 4:
@@ -300,7 +305,7 @@ class MagicIP:
     #
     def ip2hex(self):
 
-        if self.ip and self.isip():
+        if self.ip and self.isip(self.ip):
 
             data = self.ip.split("/")[0].split(":")[0].split(".")
             result = {
@@ -338,7 +343,7 @@ class MagicIP:
     #
     def ip2octal(self):
 
-        if self.ip and self.isip():
+        if self.ip and self.isip(self.ip):
 
 
             return {
@@ -360,7 +365,7 @@ class MagicIP:
     #
     def ip2long(self):
 
-        if self.ip and self.isip():
+        if self.ip and self.isip(self.ip):
 
             ip_tmp = self.ip.split('.')
 
@@ -383,7 +388,7 @@ class MagicIP:
     #
     def ip2url(self):
 
-        if self.ip and self.isip():
+        if self.ip and self.isip(self.ip):
 
 
             return '%s%s%s' % (
@@ -415,7 +420,7 @@ class MagicIP:
     #
     def ip2all(self, scheme = None):
 
-        if self.ip and self.isip():
+        if self.ip and self.isip(self.ip):
 
             memo = self.prefix
             self.prefix = ''
