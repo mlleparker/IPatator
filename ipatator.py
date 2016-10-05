@@ -277,7 +277,7 @@ class MagicIP:
     #
     def isip(self, ip = None):
 
-        ip_tmp = ip.replace('http://', '').replace('https://', '').split('/')[0] if ip else None #if not self.ip else self.ip
+        ip_tmp = ip.replace('http://', '').replace('https://', '').split('/')[0] if ip else None
 
 
         if ip_tmp and len(ip_tmp.split('.')) == 4:
