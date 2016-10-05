@@ -11,7 +11,7 @@
 ## Twitter  : 'QE1sbGVQYXJrM3JfZGV2'.decode('base64')
 ## Github   : 'aHR0cHM6Ly9naXRodWIuY29tL21sbGVwYXJrZXI='.decode('base64')
 ##
-## Version : 0.0.0.4 Alpha
+## Version : 0.0.0.5 Alpha
 ## Code name : Blue ﻿Aluminium Ladybug
 ##
 ## Semantic:
@@ -67,9 +67,15 @@
 ## Changelog                          ##
 ########################################
 ##
+## 05/10/2016 0.0.0.5 Alpha
+##
+##   - Fix typos
+##   - Code optimization in ip2mask() function.
+##
+##
 ## 04/10/2016 0.0.0.4 Alpha
 ##
-##   - Fix a little bug in MagicIP()
+##   - Fix a little bug in MagicIP().
 ##
 ##
 ## 28/09/2016 0.0.0.3 Alpha
@@ -96,7 +102,7 @@
 ## TODO                               ##
 ########################################
 ##
-## For version 0.0.0.5 Alpha :
+## For version 0.0.0.6 Alpha :
 ##
 ##  - Add de-obfuscating features to MagicIP().
 ##  - Add new obfuscation methods.
@@ -150,7 +156,7 @@ import re
  ########################################
 
 __author__ = "Mademoiselle Parker"
-__version__ = "0.0.0.4 Alpha"
+__version__ = "0.0.0.5 Alpha"
 __codename__= "Blue ﻿Aluminium Ladybug"
 __authormail__= 'Z3dlbm5hZWxsZS5nbG9pcmVAZ21haWwuY29t'.decode('base64')
 __twitter__ = 'QE1sbGVQYXJrM3I='.decode('base64')
@@ -627,9 +633,7 @@ def ip2mask(ip = None):
 
     if ip and len(ip.split('/')) > 1:
 
-        ip = ip.split('/')
-        mask = '1' * int(ip[1])
-        mask = mask.zfill(32)
+        mask = ('1' * int(ip.split('/')[1])).zfill(32)
         mask_out = ''
 
 
