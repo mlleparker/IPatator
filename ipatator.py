@@ -696,6 +696,7 @@ def cidr2range(cidr = None, start_end = False, counter = False):
 
         if subnet == 32:
 
+
             return bin2ip(baseIP)
 
 
@@ -720,10 +721,12 @@ def cidr2range(cidr = None, start_end = False, counter = False):
 
                 else:
 
+
                     return 2 ** (32 - subnet)
 
 
             else:
+
 
                 return {
                          'FisrtIP': iterum.iter(ipPrefix, 0, subnet),
